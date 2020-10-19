@@ -1,0 +1,4 @@
+﻿  GameLoop.cpp
+  main.cpp
+MSVCRT.lib(exe_main.obj) : error LNK2001: unresolved external symbol _main
+C:\Users\Nadia\Documents\GitHub\milestones-nadianadeem\finalProject\FinalProject\Release\FinalProject.exe : fatal error LNK1120: 1 unresolved externals
