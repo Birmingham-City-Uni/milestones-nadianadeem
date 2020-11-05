@@ -12,5 +12,13 @@ int main(int argc, char* args[])
 		return 1;
 	}
 
+	while (gameLoop->processInput()) {
+		gameLoop->update();
+		gameLoop->draw();
+	}
+
+	gameLoop->clean();
+
+	delete gameLoop;
 	return 0;
 }
