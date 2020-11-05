@@ -5,6 +5,7 @@
 #include <iostream>
 #include "Background.h"
 #include "Buildings.h"
+#include "TiledMap.h"
 
 using namespace std;
 
@@ -35,6 +36,7 @@ private:
 
 	Background* bg;
 	Buildings* buildings;
+	TiledMap* tm;
 
 	bool keyDown[512];
 };

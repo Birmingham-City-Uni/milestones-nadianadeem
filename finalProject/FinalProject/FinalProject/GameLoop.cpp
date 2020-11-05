@@ -6,6 +6,7 @@ GameLoop::GameLoop()
 	renderer = nullptr;
 	bg = nullptr;
 	buildings = nullptr;
+	tm = nullptr;
 
 	for (int i = 0; i < 512; i++) {
 		keyDown[i] = false;
@@ -42,6 +43,9 @@ bool GameLoop::init()
 
 	buildings = new Buildings(this->renderer); 
 	buildings->init();
+
+	tm = new TiledMap(this->renderer);
+	tm->init();
 
 	return true;
 }
@@ -81,6 +85,7 @@ void GameLoop::draw()
 	SDL_RenderClear(renderer);
 	bg->draw();
 	buildings->draw();
+	tm->draw();
 
 	SDL_RenderPresent(renderer);
 	SDL_Delay(16);
