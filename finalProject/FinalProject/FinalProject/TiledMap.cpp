@@ -14,15 +14,15 @@ void TiledMap::init() {
 	this->mapTileSet = SDL_CreateTextureFromSurface(this->renderer, s);
 	this->rect.x = 0;
 	this->rect.y = 0;
-	this->rect.w = 514;
-	this->rect.h = 960;
+	this->rect.w = 118;
+	this->rect.h = 66;
 	SDL_FreeSurface(s);
 }
 
 void TiledMap::draw() {
 	for (int i = 0; i < MAP_SIZE_Y; i++) {
 		for (int j = 0; j < MAP_SIZE_X; j++) {
-			SDL_Rect srcRect = { (MAP_DATA[i][j] % 6) * 12, ((MAP_DATA[i][j]) / 5) * 12, 12, 12};
+			SDL_Rect srcRect = { (MAP_DATA[i][j] % 9) * 13, ((MAP_DATA[i][j]) / 9) * 13, 13, 13};
 			SDL_Rect destRict = { j * MAP_TITLE_SIZE_PX, i * MAP_TITLE_SIZE_PX, MAP_TITLE_SIZE_PX, MAP_TITLE_SIZE_PX };
 			SDL_RenderCopy(this->renderer, this->mapTileSet, &srcRect, &destRict);
 		}
