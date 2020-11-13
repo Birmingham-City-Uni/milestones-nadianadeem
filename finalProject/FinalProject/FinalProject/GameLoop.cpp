@@ -2,12 +2,15 @@
 
 GameLoop::GameLoop()
 {
+	//Creates variables to hold specific objects.
 	window = nullptr;
 	renderer = nullptr;
 	bg = nullptr;
 	buildings = nullptr;
 	tm = nullptr;
+	player = nullptr;
 
+	//
 	for (int i = 0; i < 512; i++) {
 		keyDown[i] = false;
 	}
@@ -19,6 +22,8 @@ bool GameLoop::init()
 		std::cerr << "Could not initialise SDL: " << SDL_GetError();
 		return false;
 	}
+
+	//Window is created with a width of 512px and a heigh of 960px.
 	window = SDL_CreateWindow(
 		"Space shooter",
 		SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
@@ -38,14 +43,20 @@ bool GameLoop::init()
 		return false;
 	}
 
+	//Initalises background and gives the renderer as a parameter so the background can be drawn.
 	bg = new Background(this->renderer);
 	bg->init();
 
+	//Initalises buildings and gives the renderer as a parameter so the background can be drawn.
 	buildings = new Buildings(this->renderer); 
 	buildings->init();
 
+	//Initalises the tilemap and gives the renderer as a parameter so the background can be drawn.
 	tm = new TiledMap(this->renderer);
 	tm->init();
+
+	player = new Player(this->renderer);
+	player->init();
 
 	return true;
 }
@@ -53,24 +64,9 @@ bool GameLoop::init()
 bool GameLoop::processInput() 
 {
 	SDL_Event e;
-	while (SDL_PollEvent(&e)) {
-		if (e.type == SDL_QUIT) {
-			return false;
-		}
-		if (e.type == SDL_KEYDOWN) {
-			if (e.key.keysym.scancode < 512) {
-				keyDown[e.key.keysym.scancode] = true;
-			}
-		}
-		else if (e.type == SDL_KEYUP) {
-			if (e.key.keysym.scancode < 512) {
-				keyDown[e.key.keysym.scancode] = false;
-			}
-		}
 		
-		//process any input for game classes here
-		//player->processInput(e);
-	}
+	//process any input for game classes here
+	//player->processInput(e);
 
 	return true;
 }
@@ -82,10 +78,12 @@ void GameLoop::update()
 
 void GameLoop::draw() 
 {
+	//Draws everything to the window.
 	SDL_RenderClear(renderer);
 	bg->draw();
 	buildings->draw();
 	tm->draw();
+	player->draw();
 
 	SDL_RenderPresent(renderer);
 	SDL_Delay(16);

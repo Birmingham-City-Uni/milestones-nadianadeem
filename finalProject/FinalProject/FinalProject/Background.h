@@ -11,6 +11,7 @@ public:
 	void clean();
 
 private:
+	//Used to set the position and create a surface so the background can be rendered.
 	SDL_Texture* texture = nullptr;
 	SDL_Renderer* renderer = nullptr;
 

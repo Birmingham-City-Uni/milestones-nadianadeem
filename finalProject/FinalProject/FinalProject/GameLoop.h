@@ -6,6 +6,7 @@
 #include "Background.h"
 #include "Buildings.h"
 #include "TiledMap.h"
+#include "Player.h"
 
 using namespace std;
 
@@ -37,6 +38,7 @@ private:
 	Background* bg;
 	Buildings* buildings;
 	TiledMap* tm;
+	Player* player;
 
 	bool keyDown[512];
 };
