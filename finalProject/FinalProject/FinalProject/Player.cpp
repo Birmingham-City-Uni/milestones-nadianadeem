@@ -19,3 +19,19 @@ void Player::draw()
 {
 	SDL_RenderCopy(this->renderer, this->texture, 0, &this->position);
 }
+
+void Player::update() {
+
+}
+
+void Player::clean() {
+
+}
+
+float Player::getPosX() {
+	return position.x;
+}
+
+float Player::getPosY() {
+	return position.y;
+}

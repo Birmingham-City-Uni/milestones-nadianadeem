@@ -7,6 +7,8 @@
 #include "Buildings.h"
 #include "TiledMap.h"
 #include "Player.h"
+#include "BulletManager.h"
+#include "ZombieSpawner.h"
 
 using namespace std;
 
@@ -39,6 +41,8 @@ private:
 	Buildings* buildings;
 	TiledMap* tm;
 	Player* player;
+	BulletManager* bm;
+	ZombieSpawner* zs;
 
 	bool keyDown[512];
 };

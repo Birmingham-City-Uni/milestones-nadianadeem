@@ -10,6 +10,8 @@ public:
 	void update();
 	void processInput();
 	void clean();
+	float getPosX();
+	float getPosY();
 
 private:
 	SDL_Renderer* renderer;

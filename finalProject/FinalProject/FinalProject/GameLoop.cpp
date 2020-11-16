@@ -9,6 +9,8 @@ GameLoop::GameLoop()
 	buildings = nullptr;
 	tm = nullptr;
 	player = nullptr;
+	bm = nullptr;
+	zs = nullptr;
 
 	//
 	for (int i = 0; i < 512; i++) {
@@ -58,6 +60,12 @@ bool GameLoop::init()
 	player = new Player(this->renderer);
 	player->init();
 
+	bm = new BulletManager(this->renderer, this->player);
+	bm->init();
+
+	zs = new ZombieSpawner(this->renderer, this->bm);
+	zs->init();
+
 	return true;
 }
 
@@ -68,12 +76,34 @@ bool GameLoop::processInput()
 	//process any input for game classes here
 	//player->processInput(e);
 
+	while (SDL_PollEvent(&e)) {
+		if (e.type == SDL_QUIT) {
+			return false;
+		}
+		if (e.type == SDL_KEYDOWN) {
+			//check against array size to prevent writing outside the bounds
+			if (e.key.keysym.scancode < 512) {
+				keyDown[e.key.keysym.scancode] = true;
+			}
+		}
+		else if (e.type == SDL_KEYUP) {
+			//check against array size to prevent writing outside the bounds
+			if (e.key.keysym.scancode < 512) {
+				keyDown[e.key.keysym.scancode] = false;
+			}
+		}
+
+	}
+
+	bm->processInput(keyDown);
+
 	return true;
 }
 
 void GameLoop::update() 
 {
-
+	bm->update();
+	zs->update();
 }
 
 void GameLoop::draw() 
@@ -82,8 +112,10 @@ void GameLoop::draw()
 	SDL_RenderClear(renderer);
 	bg->draw();
 	buildings->draw();
+	bm->draw();
 	tm->draw();
 	player->draw();
+	zs->draw();
 
 	SDL_RenderPresent(renderer);
 	SDL_Delay(16);

@@ -1,2 +1,6 @@
-﻿  Player.cpp
+﻿  ZombieSpawner.cpp
+C:\Users\Nadia\Documents\GitHub\milestones-nadianadeem\finalProject\FinalProject\FinalProject\ZombieSpawner.cpp(19,29): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+C:\Users\Nadia\Documents\GitHub\milestones-nadianadeem\finalProject\FinalProject\FinalProject\ZombieSpawner.cpp(19,29): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\Nadia\Documents\GitHub\milestones-nadianadeem\finalProject\FinalProject\FinalProject\ZombieSpawner.cpp(19,34): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+C:\Users\Nadia\Documents\GitHub\milestones-nadianadeem\finalProject\FinalProject\FinalProject\ZombieSpawner.cpp(19,34): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
   FinalProject.vcxproj -> C:\Users\Nadia\Documents\GitHub\milestones-nadianadeem\finalProject\FinalProject\x64\Debug\FinalProject.exe

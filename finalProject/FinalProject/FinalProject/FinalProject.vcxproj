@@ -153,17 +153,22 @@
   <ItemGroup>
     <ClCompile Include="Background.cpp" />
     <ClCompile Include="Buildings.cpp" />
+    <ClCompile Include="BulletManager.cpp" />
     <ClCompile Include="GameLoop.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="TiledMap.cpp" />
+    <ClCompile Include="ZombieSpawner.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Background.h" />
     <ClInclude Include="Buildings.h" />
+    <ClInclude Include="BulletManager.h" />
+    <ClInclude Include="Bullets.h" />
     <ClInclude Include="GameLoop.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="TiledMap.h" />
+    <ClInclude Include="ZombieSpawner.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
