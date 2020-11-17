@@ -18,5 +18,9 @@
 
 
 <h3> Dev Log </h3>
-<p> 28/10/2020 - Basic game loop created as well as the creation of a screen and the README document. Assets for the game have been found.</p>
+<p> 17/11/2020 - The enemies of the game have been created as well as a shooting mechanic with working collisions. In addition to this when a bullet collides with an enemy there is a UI overlay showing a score that it increase by 1 every time an enemy is shot. I have found the assets for the zombies but they are part of a sprite sheet, my next task is working on animations for the game, the zombies shall hopefully be implemented then. </p>
+
 <p> 13/11/2020 - Tile map has been implemented as well as the character being created also. I have decided to make a top down game instead of a side-view game as it will be straightforward to implmenet shooting and pathfind mechanics. Assets for top-down games were slightly easier to find when looking for zombies assets that matched the aesthetic of Zombie Mayhem. </p>
+
+<p> 28/10/2020 - Basic game loop created as well as the creation of a screen and the README document. Assets for the game have been found.</p>
+
