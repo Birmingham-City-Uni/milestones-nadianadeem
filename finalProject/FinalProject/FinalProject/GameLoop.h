@@ -3,12 +3,14 @@
 #include <SDL.h>
 #include <SDL_ttf.h>
 #include <iostream>
+#include <sstream>
 #include "Background.h"
 #include "Buildings.h"
 #include "TiledMap.h"
 #include "Player.h"
 #include "BulletManager.h"
 #include "ZombieSpawner.h"
+#include "TextRenderer.h"
 
 using namespace std;
 
@@ -43,6 +45,7 @@ private:
 	Player* player;
 	BulletManager* bm;
 	ZombieSpawner* zs;
+	TextRenderer* textRenderer;
 
 	bool keyDown[512];
 };

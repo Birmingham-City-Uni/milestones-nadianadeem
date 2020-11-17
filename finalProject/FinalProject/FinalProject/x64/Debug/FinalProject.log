@@ -1,6 +1,4 @@
-﻿  ZombieSpawner.cpp
-C:\Users\Nadia\Documents\GitHub\milestones-nadianadeem\finalProject\FinalProject\FinalProject\ZombieSpawner.cpp(19,29): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
-C:\Users\Nadia\Documents\GitHub\milestones-nadianadeem\finalProject\FinalProject\FinalProject\ZombieSpawner.cpp(19,29): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\Nadia\Documents\GitHub\milestones-nadianadeem\finalProject\FinalProject\FinalProject\ZombieSpawner.cpp(19,34): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
-C:\Users\Nadia\Documents\GitHub\milestones-nadianadeem\finalProject\FinalProject\FinalProject\ZombieSpawner.cpp(19,34): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+﻿  TextRenderer.cpp
+C:\Users\Nadia\Documents\GitHub\milestones-nadianadeem\finalProject\FinalProject\FinalProject\TextRenderer.cpp(7,55): warning C4474: 'printf' : too many arguments passed for format string
+C:\Users\Nadia\Documents\GitHub\milestones-nadianadeem\finalProject\FinalProject\FinalProject\TextRenderer.cpp(7,55): message : placeholders and their parameters expect 0 variadic arguments, but 1 were provided
   FinalProject.vcxproj -> C:\Users\Nadia\Documents\GitHub\milestones-nadianadeem\finalProject\FinalProject\x64\Debug\FinalProject.exe

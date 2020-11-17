@@ -13,12 +13,14 @@ struct Zombie {
 };
 
 class ZombieSpawner {
+	friend class TextRenderer;
 public:
 	ZombieSpawner(SDL_Renderer*, BulletManager*);
 	void init();
 	void update();
 	void draw();
 	void clean();
+	int getZombiesHit();
 
 private:
 	vector<Zombie> zombies;
@@ -30,5 +32,6 @@ private:
 	SDL_Rect zombieRect;
 	SDL_Rect nullRect;
 
-	const int MAX_ZOMBIES = 2;
+	const int MAX_ZOMBIES = 1;
+	int zombiesShot = 0;
 };

@@ -11,6 +11,7 @@ GameLoop::GameLoop()
 	player = nullptr;
 	bm = nullptr;
 	zs = nullptr;
+	textRenderer = nullptr;
 
 	//
 	for (int i = 0; i < 512; i++) {
@@ -66,6 +67,8 @@ bool GameLoop::init()
 	zs = new ZombieSpawner(this->renderer, this->bm);
 	zs->init();
 
+	textRenderer = new TextRenderer("arial.ttf", 30);
+
 	return true;
 }
 
@@ -116,6 +119,10 @@ void GameLoop::draw()
 	tm->draw();
 	player->draw();
 	zs->draw();
+	stringstream zombieString;
+	zombieString << "Score ";
+	zombieString << zs->getZombiesHit();
+	textRenderer->RenderString(this->renderer, zombieString.str(), 380, 0);
 
 	SDL_RenderPresent(renderer);
 	SDL_Delay(16);
@@ -123,6 +130,6 @@ void GameLoop::draw()
 
 void GameLoop::clean() 
 {
-
+	
 }
 

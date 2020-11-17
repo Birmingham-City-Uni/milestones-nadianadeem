@@ -23,11 +23,12 @@ void ZombieSpawner::update() {
 			{
 				b.distance = 1000;
 				z.x = 0xCCCCCCCC;
+				zombiesShot += 1;
 			}
 		}
 	}
 	if (zombies.size() < MAX_ZOMBIES) {
-		zombies.push_back(Zombie{ 430, 32 });
+		zombies.push_back(Zombie{ 440, 32 });
 	}
 
 	auto remove = std::remove_if(zombies.begin(), zombies.end(), [](const Zombie& z) {return z.x == 0xCCCCCCCC; });
@@ -45,4 +46,7 @@ void ZombieSpawner::draw() {
 
 void ZombieSpawner::clean() {
 	SDL_DestroyTexture(this->zombieTexture);
+}
+int ZombieSpawner::getZombiesHit() {
+	return zombiesShot;
 }
