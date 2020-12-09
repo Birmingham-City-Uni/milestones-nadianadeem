@@ -17,7 +17,8 @@ void Player::init()
 
 void Player::draw() 
 {
-	SDL_RenderCopy(this->renderer, this->texture, 0, &this->position);
+	//SDL_RenderCopy(this->renderer, this->texture, 0, &this->position);
+	SDL_RenderCopyEx(this->renderer, this->texture, NULL, &this->position, angle, NULL, flip);
 }
 
 void Player::update() {
@@ -27,16 +28,40 @@ void Player::update() {
 void Player::processInput(bool* keyDown)
 {
 	if (keyDown[SDL_SCANCODE_RIGHT]) {
+		facingRight = true;
+		facingLeft = false;
+		facingDown = false;
+		facingUp = false;
 		this->position.x += 1;
+		angle = 0;
+		flip = SDL_FLIP_NONE;
 	}
-	if (keyDown[SDL_SCANCODE_LEFT]) {
+	else if (keyDown[SDL_SCANCODE_LEFT]) {
+		facingRight = false;
+		facingLeft = true;
+		facingDown = false;
+		facingUp = false;
 		this->position.x -= 1;
+		angle = 0;
+		flip = SDL_FLIP_HORIZONTAL;
 	}
-	if (keyDown[SDL_SCANCODE_UP]) {
+	else if (keyDown[SDL_SCANCODE_UP]) {
+		facingRight = false;
+		facingLeft = false;
+		facingDown = false;
+		facingUp = true;
 		this->position.y -= 1;
+		angle = 90;
+		flip = SDL_FLIP_HORIZONTAL;
 	}
-	if (keyDown[SDL_SCANCODE_DOWN]) {
+	else if (keyDown[SDL_SCANCODE_DOWN]) {
+		facingRight = false;
+		facingLeft = false;
+		facingDown = true;
+		facingUp = false;
 		this->position.y += 1;
+		angle = 90;
+		flip = SDL_FLIP_NONE;
 	}
 }
 
