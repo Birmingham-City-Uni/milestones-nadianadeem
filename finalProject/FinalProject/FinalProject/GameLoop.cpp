@@ -99,6 +99,7 @@ bool GameLoop::processInput()
 	}
 
 	bm->processInput(keyDown);
+	player->processInput(keyDown);
 
 	return true;
 }

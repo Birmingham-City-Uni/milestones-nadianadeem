@@ -24,6 +24,23 @@ void Player::update() {
 
 }
 
+void Player::processInput(bool* keyDown)
+{
+	if (keyDown[SDL_SCANCODE_RIGHT]) {
+		this->position.x += 1;
+	}
+	if (keyDown[SDL_SCANCODE_LEFT]) {
+		this->position.x -= 1;
+	}
+	if (keyDown[SDL_SCANCODE_UP]) {
+		this->position.y -= 1;
+	}
+	if (keyDown[SDL_SCANCODE_DOWN]) {
+		this->position.y += 1;
+	}
+}
+
+
 void Player::clean() {
 
 }

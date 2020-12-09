@@ -8,7 +8,7 @@ public:
 	void init();
 	void draw();
 	void update();
-	void processInput();
+	void processInput(bool*);
 	void clean();
 	float getPosX();
 	float getPosY();
