@@ -19,21 +19,45 @@ void BulletManager::processInput(bool* keyDown)
 			lastShot = SDL_GetTicks();
 		}
 
-		auto remove = std::remove_if(bullets.begin(), bullets.end(), [](const Bullets& b) {return b.distance > 950; });
+		auto remove = std::remove_if(bullets.begin(), bullets.end(), [](const Bullets& b) {return b.distance > 100 || b.distance < -100; });
 		bullets.erase(remove, bullets.end());
 	}
 }
 
-void BulletManager::update() 
+void BulletManager::update()
 {
-	for (auto& b : bullets) {
-		b.x += BULLET_VELOCITY;
-		b.distance += BULLET_VELOCITY;
+	if (player->facingRight) {
+		for (auto& b : bullets) {
+			b.x += BULLET_VELOCITY;
+			b.distance += BULLET_VELOCITY;
+		}
+	}
+
+	else if (player->facingLeft) {
+		for (auto& b : bullets) {
+			b.x -= BULLET_VELOCITY;
+			b.distance -= BULLET_VELOCITY;
+		}
+	}
+
+	else if (player->facingUp) {
+		for (auto& b : bullets) {
+			b.rotation = 270;
+			b.y -= BULLET_VELOCITY;
+			b.distance -= BULLET_VELOCITY;
+		}
+	}
+
+	else if (player->facingDown) {
+		for (auto& b : bullets) {
+			b.rotation = 90;
+			b.y += BULLET_VELOCITY;
+			b.distance += BULLET_VELOCITY;
+		}
 	}
 }
 
-void BulletManager::draw() 
-{
+void BulletManager::draw(){
 	SDL_Point center = { 1, 1};
 
 	for (auto& b : bullets) {

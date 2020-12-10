@@ -1,18 +1,7 @@
 ﻿  BulletManager.cpp
 C:\Users\Nadia\Documents\GitHub\milestones-nadianadeem\finalProject\FinalProject\FinalProject\BulletManager.cpp(16,33): warning C4018: '>': signed/unsigned mismatch
-C:\Users\Nadia\Documents\GitHub\milestones-nadianadeem\finalProject\FinalProject\FinalProject\BulletManager.cpp(40,22): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
-C:\Users\Nadia\Documents\GitHub\milestones-nadianadeem\finalProject\FinalProject\FinalProject\BulletManager.cpp(40,22): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\Nadia\Documents\GitHub\milestones-nadianadeem\finalProject\FinalProject\FinalProject\BulletManager.cpp(40,27): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
-C:\Users\Nadia\Documents\GitHub\milestones-nadianadeem\finalProject\FinalProject\FinalProject\BulletManager.cpp(40,27): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-  GameLoop.cpp
-  Player.cpp
-C:\Users\Nadia\Documents\GitHub\milestones-nadianadeem\finalProject\FinalProject\FinalProject\Player.cpp(49,17): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
-C:\Users\Nadia\Documents\GitHub\milestones-nadianadeem\finalProject\FinalProject\FinalProject\Player.cpp(53,17): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
-  ZombieSpawner.cpp
-C:\Users\Nadia\Documents\GitHub\milestones-nadianadeem\finalProject\FinalProject\FinalProject\ZombieSpawner.cpp(19,29): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
-C:\Users\Nadia\Documents\GitHub\milestones-nadianadeem\finalProject\FinalProject\FinalProject\ZombieSpawner.cpp(19,29): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\Nadia\Documents\GitHub\milestones-nadianadeem\finalProject\FinalProject\FinalProject\ZombieSpawner.cpp(19,34): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
-C:\Users\Nadia\Documents\GitHub\milestones-nadianadeem\finalProject\FinalProject\FinalProject\ZombieSpawner.cpp(19,34): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-  main.cpp
-  Generating Code...
+C:\Users\Nadia\Documents\GitHub\milestones-nadianadeem\finalProject\FinalProject\FinalProject\BulletManager.cpp(64,22): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+C:\Users\Nadia\Documents\GitHub\milestones-nadianadeem\finalProject\FinalProject\FinalProject\BulletManager.cpp(64,22): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\Nadia\Documents\GitHub\milestones-nadianadeem\finalProject\FinalProject\FinalProject\BulletManager.cpp(64,27): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+C:\Users\Nadia\Documents\GitHub\milestones-nadianadeem\finalProject\FinalProject\FinalProject\BulletManager.cpp(64,27): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
   FinalProject.vcxproj -> C:\Users\Nadia\Documents\GitHub\milestones-nadianadeem\finalProject\FinalProject\x64\Debug\FinalProject.exe
