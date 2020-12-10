@@ -13,15 +13,8 @@ public:
 	float getPosX();
 	float getPosY();
 
-	bool facingRight;
-	bool facingLeft;
-	bool facingUp;
-	bool facingDown;
-
 private:
 	SDL_Renderer* renderer;
 	SDL_Texture* texture;
 	SDL_Rect position;
-	int angle = 0;
-	SDL_RendererFlip flip = SDL_FLIP_NONE;
 };
