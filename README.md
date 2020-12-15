@@ -21,6 +21,8 @@
 
 
 <h3> Dev Log </h3>
+<p> 15/12/2020 </p> - Collision detection between the player and the tilemap has been implemented. Next I would like to implement the health of the player becoming damaged when hit by an enemy.
+
 <p> 09/12/2020 - Player movement implemented along with the player's image being flipped and rotated according to the user's input. The direction the bullets are shot are also affect by the player's movement now. </p>
 
 <p> 17/11/2020 - The enemies of the game have been created as well as a shooting mechanic with working collisions. In addition to this when a bullet collides with an enemy there is a UI overlay showing a score that it increase by 1 every time an enemy is shot. I have found the assets for the zombies but they are part of a sprite sheet, my next task is working on animations for the game, the zombies shall hopefully be implemented then. </p>
