@@ -58,8 +58,10 @@ bool GameLoop::init()
 	tm = new TiledMap(this->renderer);
 	tm->init();
 
-	player = new Player(this->renderer);
+	player = new Player(this->renderer, this->tm);
 	player->init();
+
+	player->tiledMap = tm;
 
 	bm = new BulletManager(this->renderer, this->player);
 	bm->init();
@@ -108,6 +110,7 @@ void GameLoop::update()
 {
 	bm->update();
 	zs->update();
+	player->update();
 }
 
 void GameLoop::draw() 

@@ -15,12 +15,7 @@ public:
 	~TiledMap();
 	void init();
 	void draw();
-private:
-	//Used to create the surface with the tilemap as the texture.
-	SDL_Renderer* renderer = nullptr;
-	SDL_Texture* mapTileSet = nullptr;
-	SDL_Rect rect;
-	//Array is used to store numbers that correspond to the tilemap, so the masp can be created.
+
 	const int MAP_DATA[MAP_SIZE_Y][MAP_SIZE_X] = {
 			{5 , 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 6},
 			{11 , 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 9},
@@ -53,4 +48,11 @@ private:
 			{11 , 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 9},
 			{14 , 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 15}
 	};
+
+private:
+	//Used to create the surface with the tilemap as the texture.
+	SDL_Renderer* renderer = nullptr;
+	SDL_Texture* mapTileSet = nullptr;
+	SDL_Rect rect;
+	//Array is used to store numbers that correspond to the tilemap, so the masp can be created.
 };

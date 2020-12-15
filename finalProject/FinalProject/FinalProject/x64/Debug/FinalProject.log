@@ -1,7 +1,4 @@
-﻿  BulletManager.cpp
-C:\Users\Nadia\Documents\GitHub\milestones-nadianadeem\finalProject\FinalProject\FinalProject\BulletManager.cpp(16,33): warning C4018: '>': signed/unsigned mismatch
-C:\Users\Nadia\Documents\GitHub\milestones-nadianadeem\finalProject\FinalProject\FinalProject\BulletManager.cpp(64,22): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
-C:\Users\Nadia\Documents\GitHub\milestones-nadianadeem\finalProject\FinalProject\FinalProject\BulletManager.cpp(64,22): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\Nadia\Documents\GitHub\milestones-nadianadeem\finalProject\FinalProject\FinalProject\BulletManager.cpp(64,27): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
-C:\Users\Nadia\Documents\GitHub\milestones-nadianadeem\finalProject\FinalProject\FinalProject\BulletManager.cpp(64,27): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+﻿  Player.cpp
+C:\Users\Nadia\Documents\GitHub\milestones-nadianadeem\finalProject\FinalProject\FinalProject\Player.cpp(91,17): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
+C:\Users\Nadia\Documents\GitHub\milestones-nadianadeem\finalProject\FinalProject\FinalProject\Player.cpp(95,17): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
   FinalProject.vcxproj -> C:\Users\Nadia\Documents\GitHub\milestones-nadianadeem\finalProject\FinalProject\x64\Debug\FinalProject.exe

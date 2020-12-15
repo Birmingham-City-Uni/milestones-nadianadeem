@@ -2,9 +2,11 @@
 #include <SDL.h>
 #include <SDL_image.h>
 
+#include "TiledMap.h"
+
 class Player {
 public:
-	Player(SDL_Renderer*);
+	Player(SDL_Renderer*, TiledMap*);
 	void init();
 	void draw();
 	void update();
@@ -18,7 +20,13 @@ public:
 	bool facingUp;
 	bool facingDown;
 
+	TiledMap* tiledMap;
+
+	int oldX = position.x;
+	int oldY = position.y;
+
 private:
+
 	SDL_Renderer* renderer;
 	SDL_Texture* texture;
 	SDL_Rect position;
