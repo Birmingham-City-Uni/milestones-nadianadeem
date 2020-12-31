@@ -35,6 +35,9 @@ private:
 	SDL_Rect zombieRect;
 	SDL_Rect nullRect;
 
-	const int MAX_ZOMBIES = 1;
 	int zombiesShot = 0;
+
+	const int WAVE_SPAWN_TIME = 10000;
+	long int lastSpawnTime = 0;
+	int currentWave = 0;
 };

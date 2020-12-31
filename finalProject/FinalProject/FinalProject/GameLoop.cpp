@@ -124,7 +124,7 @@ void GameLoop::draw()
 	player->draw();
 	zs->draw();
 	stringstream zombieString;
-	zombieString << "Score ";
+	zombieString << "SCORE ";
 	zombieString << zs->getZombiesHit();
 	textRenderer->RenderString(this->renderer, zombieString.str(), 380, 0);
 

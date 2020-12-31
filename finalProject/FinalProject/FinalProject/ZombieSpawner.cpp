@@ -6,15 +6,34 @@ void ZombieSpawner::init() {
 	SDL_Surface* surface = IMG_Load("assets/SPRITES/misc/drone/drone-1.png");
 	this->zombieTexture = SDL_CreateTextureFromSurface(this->renderer, surface);
 	SDL_FreeSurface(surface);
-
-	for (int i = 0; i < MAX_ZOMBIES; i++) {
-		zombies.push_back(Zombie{ 430, 32});
-	}
 }
 
 void ZombieSpawner::update() {
+	if (SDL_GetTicks() - lastSpawnTime > WAVE_SPAWN_TIME) {
+		currentWave++;
+		for (int i = 0; i < currentWave; i++) {
+			int location = rand() % (4-0) + 1;
+
+			if (location == 0) {
+				zombies.push_back(Zombie{ 32, 193 });
+			}
+			else if (location == 1) {
+				zombies.push_back(Zombie{ 430,32 });
+			}
+			else if (location == 2) {
+				zombies.push_back(Zombie{ 190, 896 });
+			}
+			else if (location == 3) {
+				zombies.push_back(Zombie{ 400,450 });
+			}
+			else{
+				zombies.push_back(Zombie{ 32, 800 });
+			}
+		}
+		lastSpawnTime = SDL_GetTicks();
+	}
+
 	for (auto& z : zombies) {
-		z.x -= 1;
 		for (auto& b : bulletManager->bullets) {
 			SDL_Rect bulletRect = { b.x, b.y, 10, 10 };
 			SDL_Rect zombieRect = { z.x, z.y, 32, 32 };
@@ -35,9 +54,6 @@ void ZombieSpawner::update() {
 			z.x = 0xCCCCCCCC;
 			player->health = player->health - 50;
 		}
-	}
-	if (zombies.size() < MAX_ZOMBIES) {
-		zombies.push_back(Zombie{ 440, 32 });
 	}
 
 	auto remove = std::remove_if(zombies.begin(), zombies.end(), [](const Zombie& z) {return z.x == 0xCCCCCCCC; });
