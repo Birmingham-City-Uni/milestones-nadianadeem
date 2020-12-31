@@ -28,6 +28,10 @@ public:
 	SDL_Rect position;
 
 	float health = 100;
+	int playerLoc;
+
+	int playerTileX;
+	int playerTileY;
 
 private:
 

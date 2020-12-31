@@ -83,6 +83,7 @@ void Player::processInput(bool* keyDown)
 	}
 
 	SDL_Rect playerPos = { position.x, position.y,30,30 };
+	playerLoc = 51;
 	for (int i = 0; i < 30; i++) {
 		for (int j = 0; j < 16; j++) {
 			if (tiledMap->MAP_DATA[i][j] == 11 || tiledMap->MAP_DATA[i][j] == 5 || tiledMap->MAP_DATA[i][j] == 19 || tiledMap->MAP_DATA[i][j] == 9 || tiledMap->MAP_DATA[i][j] == 6 || tiledMap->MAP_DATA[i][j] == 10 || tiledMap->MAP_DATA[i][j] == 1 || tiledMap->MAP_DATA[i][j] == 14 ||  tiledMap->MAP_DATA[i][j] == 15) {
@@ -90,6 +91,14 @@ void Player::processInput(bool* keyDown)
 				if (SDL_HasIntersection(&playerPos, &mapTile)) {
 					position.x = oldX;
 					position.y = oldY;
+				}
+			}
+
+			if (tiledMap->MAP_DATA[i][j] == 50) {
+				SDL_Rect mapTile = { j * 32,i * 32,32,32 };
+				if (SDL_HasIntersection(&playerPos, &mapTile)) {
+					playerTileX = i;
+					playerTileY = j;
 				}
 			}
 		}

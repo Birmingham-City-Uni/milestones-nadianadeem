@@ -2,7 +2,9 @@
 
 #include <SDL.h>
 #include <SDL_image.h>
+#include <vector>
 
+using namespace std;
 #define MAP_SIZE_X 16
 #define MAP_SIZE_Y 30
 
@@ -16,7 +18,7 @@ public:
 	void init();
 	void draw();
 
-	const int MAP_DATA[MAP_SIZE_Y][MAP_SIZE_X] = {
+	vector<vector<int>> MAP_DATA = {
 			{5 , 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 6},
 			{11 , 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 9},
 			{11 , 10, 10, 50, 50, 50, 50, 50, 50, 50, 10, 10, 50, 50, 50, 9},
