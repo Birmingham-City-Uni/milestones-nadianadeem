@@ -5,6 +5,7 @@
 #include <vector>
 
 #include "BulletManager.h"
+#include "Player.h"
 
 using namespace std;
 
@@ -15,7 +16,7 @@ struct Zombie {
 class ZombieSpawner {
 	friend class TextRenderer;
 public:
-	ZombieSpawner(SDL_Renderer*, BulletManager*);
+	ZombieSpawner(SDL_Renderer*, BulletManager*, Player*);
 	void init();
 	void update();
 	void draw();
@@ -27,7 +28,9 @@ private:
 	SDL_Renderer* renderer;
 	SDL_Texture* zombieTexture;
 	BulletManager* bulletManager;
+	Player* player;
 
+	SDL_Rect playerRect;
 	SDL_Rect bulletRect;
 	SDL_Rect zombieRect;
 	SDL_Rect nullRect;

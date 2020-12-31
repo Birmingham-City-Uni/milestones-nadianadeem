@@ -66,7 +66,7 @@ bool GameLoop::init()
 	bm = new BulletManager(this->renderer, this->player);
 	bm->init();
 
-	zs = new ZombieSpawner(this->renderer, this->bm);
+	zs = new ZombieSpawner(this->renderer, this->bm, this->player);
 	zs->init();
 
 	textRenderer = new TextRenderer("arial.ttf", 30);

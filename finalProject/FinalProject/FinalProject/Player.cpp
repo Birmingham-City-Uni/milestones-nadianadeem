@@ -20,6 +20,20 @@ void Player::draw()
 {
 	//SDL_RenderCopy(this->renderer, this->texture, 0, &this->position);
 	SDL_RenderCopyEx(this->renderer, this->texture, NULL, &this->position, angle, NULL, flip);
+
+	SDL_Rect healthBackground = { 5, 5, 100, 25 };
+	SDL_SetRenderDrawColor(this->renderer, 255, 0, 0, 255);
+	SDL_RenderFillRect(this->renderer, &healthBackground);
+	float unitFactor = (float)100 / (float)100;
+	int hpWidth = health * unitFactor;
+	SDL_Rect healthBar = { 5, 5, hpWidth, 25 };
+	SDL_SetRenderDrawColor(renderer, 0, 255, 0, 255);
+	SDL_RenderFillRect(renderer, &healthBar);
+
+	if (health == 0) {
+		position.x = 1000;
+		position.y = 1000;
+	}
 }
 
 void Player::update() {

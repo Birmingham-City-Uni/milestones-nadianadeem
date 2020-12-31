@@ -19,7 +19,7 @@ void BulletManager::processInput(bool* keyDown)
 			lastShot = SDL_GetTicks();
 		}
 
-		auto remove = std::remove_if(bullets.begin(), bullets.end(), [](const Bullets& b) {return b.distance > 100 || b.distance < -100; });
+		auto remove = std::remove_if(bullets.begin(), bullets.end(), [](const Bullets& b) {return b.distance > 50; });
 		bullets.erase(remove, bullets.end());
 	}
 }
@@ -36,7 +36,7 @@ void BulletManager::update()
 	else if (player->facingLeft) {
 		for (auto& b : bullets) {
 			b.x -= BULLET_VELOCITY;
-			b.distance -= BULLET_VELOCITY;
+			b.distance += BULLET_VELOCITY;
 		}
 	}
 
@@ -44,7 +44,7 @@ void BulletManager::update()
 		for (auto& b : bullets) {
 			b.rotation = 270;
 			b.y -= BULLET_VELOCITY;
-			b.distance -= BULLET_VELOCITY;
+			b.distance += BULLET_VELOCITY;
 		}
 	}
 

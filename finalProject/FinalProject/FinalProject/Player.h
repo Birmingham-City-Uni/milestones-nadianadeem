@@ -25,11 +25,14 @@ public:
 	int oldX = position.x;
 	int oldY = position.y;
 
+	SDL_Rect position;
+
+	float health = 100;
+
 private:
 
 	SDL_Renderer* renderer;
 	SDL_Texture* texture;
-	SDL_Rect position;
 	int angle = 0;
 	SDL_RendererFlip flip = SDL_FLIP_NONE;
 };

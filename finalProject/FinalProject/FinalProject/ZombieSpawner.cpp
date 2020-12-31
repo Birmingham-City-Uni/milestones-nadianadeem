@@ -1,6 +1,6 @@
 #include "ZombieSpawner.h"
 
-ZombieSpawner::ZombieSpawner(SDL_Renderer* renderer, BulletManager* bulletManager) : renderer(renderer), bulletManager(bulletManager) {};
+ZombieSpawner::ZombieSpawner(SDL_Renderer* renderer, BulletManager* bulletManager, Player* player) : renderer(renderer), bulletManager(bulletManager), player(player) {};
 
 void ZombieSpawner::init() {
 	SDL_Surface* surface = IMG_Load("assets/SPRITES/misc/drone/drone-1.png");
@@ -25,6 +25,15 @@ void ZombieSpawner::update() {
 				z.x = 0xCCCCCCCC;
 				zombiesShot += 1;
 			}
+		}
+
+		SDL_Rect playerRect = { player->position.x, player->position.y, 32, 32 };
+		SDL_Rect zombieRect = { z.x, z.y, 32, 32 };
+
+		if (SDL_IntersectRect(&playerRect, &zombieRect, &nullRect))
+		{
+			z.x = 0xCCCCCCCC;
+			player->health = player->health - 50;
 		}
 	}
 	if (zombies.size() < MAX_ZOMBIES) {
