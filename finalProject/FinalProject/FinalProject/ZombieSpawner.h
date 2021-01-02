@@ -16,6 +16,7 @@ struct Zombie {
 	int x, y;
 	int oldX, oldY;
 	int tileX, tileY;
+	int nextMove;
 };
 
 class ZombieSpawner {
@@ -47,8 +48,10 @@ private:
 	SDL_Rect nullRect;
 
 	int zombiesShot = 0;
+	int nMove = 0;
 
 	const int WAVE_SPAWN_TIME = 10000;
 	long int lastSpawnTime = 0;
-	int currentWave = 0;
+	long int checkTime = 0;
+	int currentWave = 1;
 };

@@ -10,30 +10,65 @@ void ZombieSpawner::init() {
 
 void ZombieSpawner::update() {
 	if (SDL_GetTicks() - lastSpawnTime > WAVE_SPAWN_TIME) {
-		currentWave++;
+
 		for (int i = 0; i < currentWave; i++) {
-			int location = rand() % (4-0) + 1;
+			int location = rand() % 4 + 0;
 
 			if (location == 0) {
 				zombies.push_back(Zombie{ 32, 193 });
+				//tiledMap->MAP_DATA[1][5] = 32;
 			}
 			else if (location == 1) {
 				zombies.push_back(Zombie{ 430,32 });
+				//tiledMap->MAP_DATA[1][5] = 32;
 			}
 			else if (location == 2) {
 				zombies.push_back(Zombie{ 190, 896 });
+				//tiledMap->MAP_DATA[1][5] = 32;
 			}
 			else if (location == 3) {
 				zombies.push_back(Zombie{ 400,450 });
+				//tiledMap->MAP_DATA[1][5] = 32;
+
 			}
-			else{
+			else if (location == 4){
 				zombies.push_back(Zombie{ 32, 800 });
+				//tiledMap->MAP_DATA[1][5] = 32;
 			}
+			else {
+				//tiledMap->MAP_DATA[1][5] = 32;
+			}
+
 		}
+
 		lastSpawnTime = SDL_GetTicks();
 	}
 
+	if (SDL_GetTicks() - checkTime > 1000) {
+		for (auto& z : zombies) {
+			int tileNo = 1;
+			const int V = MAP_SIZE_X * (MAP_SIZE_Y-1);
+			vector<int> adj[V];
+			validatePath(tiledMap->MAP_DATA, 16, 30, V, adj, z.tileX, z.tileY);
+			z.nextMove = nMove;
+			for (int i = 0; i < 31; i++) {
+				for (int j = 0; j < 16; j++) {
+					if (tileNo == z.nextMove) {
+						cout << nMove << endl;
+						cout << i << " " << j << endl;
+						z.x = j * 32;
+						z.y = i * 32;
+					}
+					tileNo = tileNo + 1;
+				}
+			}
+		}
+
+		checkTime = SDL_GetTicks();
+	}
+
 	for (auto& z : zombies) {
+
 		int oldX = z.x;
 		int oldY = z.y;
 		for (auto& b : bulletManager->bullets) {
@@ -58,29 +93,24 @@ void ZombieSpawner::update() {
 			player->health = player->health - 50;
 		}
 
-		SDL_Rect zomPos = { z.x, z.y,30,30 };
+		SDL_Rect zomPos = { z.x, z.y,20,20 };
 		for (int i = 0; i < 30; i++) {
 			for (int j = 0; j < 16; j++) {
 				if (tiledMap->MAP_DATA[i][j] == 11 || tiledMap->MAP_DATA[i][j] == 5 || tiledMap->MAP_DATA[i][j] == 19 || tiledMap->MAP_DATA[i][j] == 9 || tiledMap->MAP_DATA[i][j] == 6 || tiledMap->MAP_DATA[i][j] == 10 || tiledMap->MAP_DATA[i][j] == 1 || tiledMap->MAP_DATA[i][j] == 14 || tiledMap->MAP_DATA[i][j] == 15) {
 					SDL_Rect mapTile = { j * 32,i * 32,32,32 };
 					if (SDL_HasIntersection(&zomPos, &mapTile)) {
-						z.x = z.oldX;
-						z.y = z.oldY;
+						
 					}
 				}
 
-				if (tiledMap->MAP_DATA[i][j] == 50) {
-					SDL_Rect mapTile = { j * 32,i * 32,32,32 };
-					if (SDL_HasIntersection(&zomPos, &mapTile)) {
-						z.tileX = i;
-						z.tileY = j;
-					}
+				SDL_Rect mapTile = { j * 32,i * 32,32,32 };
+				if (SDL_HasIntersection(&zomPos, &mapTile)) {
+					z.tileX = i;
+					z.tileY = j;
 				}
 			}
 		}
-		const int V = MAP_SIZE_X * MAP_SIZE_Y;
-		vector<int> adj[V];
-		validatePath(tiledMap->MAP_DATA, 15, 29, V, adj, z.tileX, z.tileY);
+
 	}
 
 	auto remove = std::remove_if(zombies.begin(), zombies.end(), [](const Zombie& z) {return z.x == 0xCCCCCCCC; });
@@ -176,13 +206,14 @@ void ZombieSpawner::outputPath(vector<int> adj[], int s, int d, int v, int col)
 	//Backtracks and adds the previous nodes to the vector path until the starting node has been reached..
 	while (previousVertex[crawl] != -1) {
 		path.push_back(previousVertex[crawl]);
-		cout << previousVertex[crawl] << endl;
 		crawl = previousVertex[crawl];
+		cout << crawl << endl;
 	}
 
-	cout << path[0] << endl;
-	//Separates console using an end line.
-	cout << endl;
+	int si = path.size();
+
+	nMove = path[2];
+	cout << "node " << nMove << endl;
 
 }
 
@@ -224,7 +255,7 @@ void ZombieSpawner::validatePath(vector<vector<int>> M, int col, int row, int V,
 					createEdge(adj, currentVertex, currentVertex + 1);
 				if (walkable(i, j - 1, M, row, col))
 					createEdge(adj, currentVertex, currentVertex - 1);
-				if (i < V && walkable(i + 1, j, M, row, col))
+				if (i < V-1 && walkable(i + 1, j, M, row, col))
 					createEdge(adj, currentVertex, currentVertex + col);
 				if (i > 0 && walkable(i - 1, j, M, row, col))
 					createEdge(adj, currentVertex, currentVertex - col);
@@ -232,14 +263,13 @@ void ZombieSpawner::validatePath(vector<vector<int>> M, int col, int row, int V,
 
 			// Store the information of the starting node.
 			if (i == player->playerTileX && j == player->playerTileY) {
-				d = currentVertex;
-				cout << "s " << i << " " << j << endl;
+				s = currentVertex;
+				cout << i << " " << j << endl;
 			}
 
 			// Store the information of the destination node,
 			if (i == tileX && j == tileY) {
-				s = currentVertex;
-				cout << "d " << i << " " << j << endl;
+				d = currentVertex;
 			}
 			currentVertex++;
 		}

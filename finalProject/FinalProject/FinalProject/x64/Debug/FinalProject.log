@@ -1,7 +1,8 @@
 ﻿  ZombieSpawner.cpp
 C:\Users\Nadia\Documents\GitHub\milestones-nadianadeem\finalProject\FinalProject\FinalProject\ZombieSpawner.cpp(12,37): warning C4018: '>': signed/unsigned mismatch
-C:\Users\Nadia\Documents\GitHub\milestones-nadianadeem\finalProject\FinalProject\FinalProject\ZombieSpawner.cpp(40,29): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
-C:\Users\Nadia\Documents\GitHub\milestones-nadianadeem\finalProject\FinalProject\FinalProject\ZombieSpawner.cpp(40,29): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\Nadia\Documents\GitHub\milestones-nadianadeem\finalProject\FinalProject\FinalProject\ZombieSpawner.cpp(40,34): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
-C:\Users\Nadia\Documents\GitHub\milestones-nadianadeem\finalProject\FinalProject\FinalProject\ZombieSpawner.cpp(40,34): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\Nadia\Documents\GitHub\milestones-nadianadeem\finalProject\FinalProject\FinalProject\ZombieSpawner.cpp(75,29): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+C:\Users\Nadia\Documents\GitHub\milestones-nadianadeem\finalProject\FinalProject\FinalProject\ZombieSpawner.cpp(75,29): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\Nadia\Documents\GitHub\milestones-nadianadeem\finalProject\FinalProject\FinalProject\ZombieSpawner.cpp(75,34): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
+C:\Users\Nadia\Documents\GitHub\milestones-nadianadeem\finalProject\FinalProject\FinalProject\ZombieSpawner.cpp(75,34): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\Nadia\Documents\GitHub\milestones-nadianadeem\finalProject\FinalProject\FinalProject\ZombieSpawner.cpp(213,22): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
   FinalProject.vcxproj -> C:\Users\Nadia\Documents\GitHub\milestones-nadianadeem\finalProject\FinalProject\x64\Debug\FinalProject.exe
