@@ -33,6 +33,7 @@ public:
 	bool walkable(int i, int j, vector<vector<int>> M, int row, int col);
 	void validatePath(vector<vector<int>> M, int col, int row, int V, vector<int> adj[], int tileX, int tileY);
 	int getZombiesHit();
+	void removeAllZombies();
 
 private:
 	vector<Zombie> zombies;

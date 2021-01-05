@@ -93,13 +93,20 @@ void Player::processInput(bool* keyDown)
 				}
 			}
 
-			if (tiledMap->MAP_DATA[i][j] == 32) {
+			if (tiledMap->MAP_DATA[i][j] == 16) {
 				SDL_Rect mapTile = { j * 32,i * 32,32,32 };
-				/*if (SDL_HasIntersection(&playerPos, &mapTile)) {
-					for (auto& z : zs->zombies) {
+				if (SDL_HasIntersection(&playerPos, &mapTile)) {
+					removeZombies = true;
+					tiledMap->MAP_DATA[i][j] = 50;
+				}
+			}
 
-					}*/
-				//}
+			if (tiledMap->MAP_DATA[i][j] == 24) {
+				SDL_Rect mapTile = { j * 32,i * 32,32,32 };
+				if (SDL_HasIntersection(&playerPos, &mapTile)) {
+					health = health + 50;
+					tiledMap->MAP_DATA[i][j] = 50;
+				}
 			}
 
 			else {
@@ -111,6 +118,10 @@ void Player::processInput(bool* keyDown)
 			}
 
 		}
+	}
+
+	if (health > 100) {
+		health = 100;
 	}
 }
 

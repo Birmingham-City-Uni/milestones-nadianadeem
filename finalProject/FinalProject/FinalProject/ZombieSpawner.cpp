@@ -12,10 +12,10 @@ void ZombieSpawner::update() {
 	if (SDL_GetTicks() - lastSpawnTime > WAVE_SPAWN_TIME) {
 
 		for (int i = 0; i < currentWave; i++) {
-			int location = 0; //rand() % 8 + 0;
+			int location = 7; //rand() % 8 + 0;
 
 			if (location == 0) {
-				//zombies.push_back(Zombie{ 32, 193 });
+				zombies.push_back(Zombie{ 32, 193 });
 				tiledMap->MAP_DATA[1][5] = 16;
 			}
 			else if (location == 1) {
@@ -35,7 +35,8 @@ void ZombieSpawner::update() {
 				//tiledMap->MAP_DATA[1][5] = 32;
 			}
 			else if (location == 7){
-				tiledMap->MAP_DATA[17][10] = 32;
+				player->health = 50;
+				tiledMap->MAP_DATA[17][10] = 24;
 			}
 
 		}
@@ -116,6 +117,11 @@ void ZombieSpawner::update() {
 	auto removeBullet = std::remove_if(bulletManager->bullets.begin(), bulletManager->bullets.end(), [](const Bullets& b) {return b.distance == 1000; });
 	zombies.erase(remove, zombies.end());
 	bulletManager->bullets.erase(removeBullet, bulletManager->bullets.end());
+
+	if (player->removeZombies) {
+		zombies.erase(zombies.begin(), zombies.end());
+		player->removeZombies = false;
+	}
 
 }
 
@@ -285,3 +291,4 @@ int ZombieSpawner::getZombiesHit()
 {
 	return zombiesShot;
 }
+

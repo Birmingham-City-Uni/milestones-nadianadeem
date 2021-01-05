@@ -36,6 +36,8 @@ public:
 	int playerTileX;
 	int playerTileY;
 
+	bool removeZombies = false;
+
 private:
 
 	SDL_Renderer* renderer;
