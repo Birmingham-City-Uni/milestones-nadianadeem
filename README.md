@@ -21,7 +21,11 @@
 
 
 <h3> Dev Log </h3>
-<p> 15/12/2020 </p> - Collision detection between the player and the tilemap has been implemented. Next I would like to implement the health of the player becoming damaged when hit by an enemy.
+<p> 5/01/2021 - Background audio and sound effects have been implmente. The unique mechanics have now also been implmeneted so there is a health and a bomb pickup (these are explained in the description above. There is a memory leak in the program somewhere so I am currently trying to find the cause of that. I free all surfaces once created so I am unsure of where the memory leak is currently. Found the fix to the memory leak it was the text renderer showing the score.</p>
+
+<p> 3/01/2021 - Pathfinding algorithm is done and works with the enemies movement. This is done via a Breadth First Search algorithm where a path is created this is done in the update function for each zombie to get the next move the zombies should go in. </p>
+
+<p> 15/12/2020 - Collision detection between the player and the tilemap has been implemented. Next I would like to implement the health of the player becoming damaged when hit by an enemy. </p>
 
 <p> 09/12/2020 - Player movement implemented along with the player's image being flipped and rotated according to the user's input. The direction the bullets are shot are also affect by the player's movement now. </p>
 
