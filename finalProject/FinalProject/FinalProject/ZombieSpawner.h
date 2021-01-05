@@ -33,7 +33,6 @@ public:
 	bool walkable(int i, int j, vector<vector<int>> M, int row, int col);
 	void validatePath(vector<vector<int>> M, int col, int row, int V, vector<int> adj[], int tileX, int tileY);
 	int getZombiesHit();
-	void removeAllZombies();
 
 private:
 	vector<Zombie> zombies;
@@ -48,11 +47,14 @@ private:
 	SDL_Rect zombieRect;
 	SDL_Rect nullRect;
 
+
 	int zombiesShot = 0;
 	int nMove = 0;
+	int tileNo = 1;
 
 	const int WAVE_SPAWN_TIME = 10000;
 	long int lastSpawnTime = 0;
 	long int checkTime = 0;
+	int waveIncrease = 5;
 	int currentWave = 1;
 };

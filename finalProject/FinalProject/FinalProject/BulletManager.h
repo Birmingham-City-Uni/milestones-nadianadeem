@@ -31,6 +31,7 @@ private:
 	Player* player;
 	SoundPlayer* sp;
 
+	SDL_Point center = { 1, 1 };
 	const int SHOOT_DELAY = 300;
 	const int BULLET_VELOCITY = 15;
 	unsigned int lastShot = 0;

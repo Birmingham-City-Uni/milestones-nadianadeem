@@ -17,6 +17,7 @@ public:
 	~TiledMap();
 	void init();
 	void draw();
+	void clean();
 
 	vector<vector<int>> MAP_DATA = {
 			{5 , 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 6},

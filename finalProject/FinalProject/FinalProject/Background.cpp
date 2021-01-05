@@ -24,3 +24,8 @@ void Background::init() {
 void Background::draw() {
 	SDL_RenderCopy(this->renderer, this->texture, 0, &this->position);
 }
+
+void Background::clean()
+{
+	SDL_DestroyTexture(this->texture);
+}

@@ -11,6 +11,7 @@ public:
 	virtual ~TextRenderer();
 
 	void RenderString(SDL_Renderer* renderer, string text, int x, int y);
+	void clean();
 
 private:
 	SDL_Surface* textSurface;

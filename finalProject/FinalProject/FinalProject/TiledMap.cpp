@@ -31,3 +31,8 @@ void TiledMap::draw() {
 		}
 	}
 }
+
+void TiledMap::clean()
+{
+	SDL_DestroyTexture(mapTileSet);
+}

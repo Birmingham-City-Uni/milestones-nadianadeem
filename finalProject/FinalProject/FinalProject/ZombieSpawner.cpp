@@ -12,7 +12,11 @@ void ZombieSpawner::update() {
 	if (SDL_GetTicks() - lastSpawnTime > WAVE_SPAWN_TIME) {
 
 		for (int i = 0; i < currentWave; i++) {
-			int location = 7; //rand() % 8 + 0;
+			if (zombiesShot == waveIncrease) {
+				currentWave = currentWave + 1;
+				waveIncrease = waveIncrease + 5;
+			}
+			int location = rand() % 8 + 0;
 
 			if (location == 0) {
 				zombies.push_back(Zombie{ 32, 193 });
@@ -54,8 +58,6 @@ void ZombieSpawner::update() {
 			for (int i = 0; i < 31; i++) {
 				for (int j = 0; j < 16; j++) {
 					if (tileNo == z.nextMove) {
-						cout << nMove << endl;
-						cout << i << " " << j << endl;
 						z.x = j * 32;
 						z.y = i * 32;
 					}
@@ -132,6 +134,11 @@ void ZombieSpawner::draw() {
 	}
 }
 
+void ZombieSpawner::clean()
+{
+	SDL_DestroyTexture(zombieTexture);
+}
+
 
 //Program to find the shortest path between nodes to help the character escape the maze.
 
@@ -199,7 +206,6 @@ void ZombieSpawner::outputPath(vector<int> adj[], int s, int d, int v, int col)
 
 	//Run the Breadth First Search on the algorithm
 	if (BFS(adj, s, d, v, previousVertex) == false) {
-		cout << "Path is not possible" << endl;
 		return;
 	}
 
@@ -212,13 +218,9 @@ void ZombieSpawner::outputPath(vector<int> adj[], int s, int d, int v, int col)
 	while (previousVertex[crawl] != -1) {
 		path.push_back(previousVertex[crawl]);
 		crawl = previousVertex[crawl];
-		cout << crawl << endl;
 	}
 
-	int si = path.size();
-
-	nMove = path[2];
-	cout << "node " << nMove << endl;
+	nMove = path[1];
 
 }
 
@@ -269,7 +271,6 @@ void ZombieSpawner::validatePath(vector<vector<int>> M, int col, int row, int V,
 			// Store the information of the starting node.
 			if (i == player->playerTileX && j == player->playerTileY) {
 				s = currentVertex;
-				cout << i << " " << j << endl;
 			}
 
 			// Store the information of the destination node,

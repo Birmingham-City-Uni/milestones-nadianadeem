@@ -20,7 +20,7 @@ void BulletManager::processInput(bool* keyDown)
 			lastShot = SDL_GetTicks();
 		}
 
-		auto remove = std::remove_if(bullets.begin(), bullets.end(), [](const Bullets& b) {return b.distance > 50; });
+		auto remove = std::remove_if(bullets.begin(), bullets.end(), [](const Bullets& b) {return b.distance > 70; });
 		bullets.erase(remove, bullets.end());
 	}
 }
@@ -59,7 +59,6 @@ void BulletManager::update()
 }
 
 void BulletManager::draw(){
-	SDL_Point center = { 1, 1};
 
 	for (auto& b : bullets) {
 		SDL_Rect dest = { b.x, b.y, 10, 10 };

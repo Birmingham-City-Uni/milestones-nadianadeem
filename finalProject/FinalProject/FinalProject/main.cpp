@@ -4,6 +4,7 @@
 
 GameLoop* gameLoop;
 
+
 int main(int argc, char* args[]) 
 {
 	gameLoop = new GameLoop();

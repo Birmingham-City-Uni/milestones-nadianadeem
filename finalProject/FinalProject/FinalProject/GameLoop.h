@@ -37,6 +37,7 @@ public:
 	}
 
 private:
+	stringstream zombieString;
 	SDL_Window* window;
 	SDL_Renderer* renderer;
 

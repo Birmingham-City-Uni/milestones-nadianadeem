@@ -24,3 +24,8 @@ void Buildings::init() {
 void Buildings::draw() {
 	SDL_RenderCopy(this->renderer, this->texture, 0, &this->position);
 }
+
+void Buildings::clean()
+{
+	SDL_DestroyTexture(this->texture);
+}

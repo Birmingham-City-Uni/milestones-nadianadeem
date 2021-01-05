@@ -37,14 +37,14 @@ void Player::draw()
 }
 
 void Player::update() {
-	int oldX = position.x;
-	int oldY = position.y;
+	oldX = position.x;
+	oldY = position.y;
 }
 
 void Player::processInput(bool* keyDown)
 {
-	int oldX = position.x;
-	int oldY = position.y;
+	oldX = position.x;
+	oldY = position.y;
 	if (keyDown[SDL_SCANCODE_RIGHT]) {
 		facingRight = true;
 		facingLeft = false;
@@ -81,12 +81,15 @@ void Player::processInput(bool* keyDown)
 		angle = 90;
 		flip = SDL_FLIP_NONE;
 	}
+	else if (keyDown[SDL_SCANCODE_ESCAPE]) {
+		exit();
+	}
 
-	SDL_Rect playerPos = { position.x, position.y,25,25 };
+	playerPos = { position.x, position.y,25,25 };
 	for (int i = 0; i < 30; i++) {
 		for (int j = 0; j < 16; j++) {
+			mapTile = { j * 32,i * 32,32,32 };
 			if (tiledMap->MAP_DATA[i][j] == 11 || tiledMap->MAP_DATA[i][j] == 5 || tiledMap->MAP_DATA[i][j] == 19 || tiledMap->MAP_DATA[i][j] == 9 || tiledMap->MAP_DATA[i][j] == 6 || tiledMap->MAP_DATA[i][j] == 10 || tiledMap->MAP_DATA[i][j] == 1 || tiledMap->MAP_DATA[i][j] == 14 || tiledMap->MAP_DATA[i][j] == 15) {
-				SDL_Rect mapTile = { j * 32,i * 32,32,32 };
 				if (SDL_HasIntersection(&playerPos, &mapTile)) {
 					position.x = oldX;
 					position.y = oldY;
@@ -94,7 +97,6 @@ void Player::processInput(bool* keyDown)
 			}
 
 			if (tiledMap->MAP_DATA[i][j] == 16) {
-				SDL_Rect mapTile = { j * 32,i * 32,32,32 };
 				if (SDL_HasIntersection(&playerPos, &mapTile)) {
 					removeZombies = true;
 					tiledMap->MAP_DATA[i][j] = 50;
@@ -102,7 +104,6 @@ void Player::processInput(bool* keyDown)
 			}
 
 			if (tiledMap->MAP_DATA[i][j] == 24) {
-				SDL_Rect mapTile = { j * 32,i * 32,32,32 };
 				if (SDL_HasIntersection(&playerPos, &mapTile)) {
 					health = health + 50;
 					tiledMap->MAP_DATA[i][j] = 50;
@@ -110,7 +111,6 @@ void Player::processInput(bool* keyDown)
 			}
 
 			else {
-				SDL_Rect mapTile = { j * 32,i * 32,32,32 };
 				if (SDL_HasIntersection(&playerPos, &mapTile)) {
 					playerTileX = i;
 					playerTileY = j;
@@ -127,7 +127,7 @@ void Player::processInput(bool* keyDown)
 
 
 void Player::clean() {
-
+	SDL_DestroyTexture(this->texture);
 }
 
 float Player::getPosX() {
@@ -136,4 +136,9 @@ float Player::getPosX() {
 
 float Player::getPosY() {
 	return position.y;
+}
+
+void Player::exit()
+{
+	SDL_Quit();
 }

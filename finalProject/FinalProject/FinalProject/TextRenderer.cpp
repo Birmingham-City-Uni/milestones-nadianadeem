@@ -23,13 +23,20 @@ TextRenderer::~TextRenderer()
 void TextRenderer::RenderString(SDL_Renderer* renderer, string text, int x, int y)
 {
 	SDL_Color textColor = { 255, 0, 0 };
-	textSurface = TTF_RenderText_Solid(font, text.c_str() , textColor);
+	textSurface = TTF_RenderText_Solid(font, text.c_str(), textColor);
 	textTexture = SDL_CreateTextureFromSurface(renderer, textSurface);
+	SDL_FreeSurface(textSurface);
 	SDL_Rect rect;
 	rect.x = x;
 	rect.y = y;
 	rect.w = 120;
 	rect.h = 32;
 	SDL_RenderCopy(renderer, textTexture, NULL, &rect);
+	SDL_DestroyTexture(textTexture);
+}
+
+void TextRenderer::clean()
+{
+	SDL_DestroyTexture(textTexture);
 }
 

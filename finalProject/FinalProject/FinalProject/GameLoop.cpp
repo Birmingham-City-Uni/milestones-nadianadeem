@@ -129,10 +129,12 @@ void GameLoop::draw()
 	tm->draw();
 	player->draw();
 	zs->draw();
-	stringstream zombieString;
+
 	zombieString << "SCORE ";
 	zombieString << zs->getZombiesHit();
 	textRenderer->RenderString(this->renderer, zombieString.str(), 380, 0);
+
+	zombieString.str(std::string());
 
 	SDL_RenderPresent(renderer);
 	SDL_Delay(16);
@@ -140,6 +142,15 @@ void GameLoop::draw()
 
 void GameLoop::clean() 
 {
-	
+	bg->clean();
+	buildings->clean();
+	player->clean();
+	textRenderer->clean();
+	bm->clean();
+	zs->clean();
+	tm->clean();
+
+	player->exit();
+
 }
 
