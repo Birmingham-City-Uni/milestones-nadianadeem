@@ -12,15 +12,14 @@ void ZombieSpawner::update() {
 	if (SDL_GetTicks() - lastSpawnTime > WAVE_SPAWN_TIME) {
 
 		for (int i = 0; i < currentWave; i++) {
-			int location = rand() % 4 + 0;
+			int location = 0; //rand() % 8 + 0;
 
 			if (location == 0) {
-				zombies.push_back(Zombie{ 32, 193 });
-				//tiledMap->MAP_DATA[1][5] = 32;
+				//zombies.push_back(Zombie{ 32, 193 });
+				tiledMap->MAP_DATA[1][5] = 16;
 			}
 			else if (location == 1) {
 				zombies.push_back(Zombie{ 430,32 });
-				//tiledMap->MAP_DATA[1][5] = 32;
 			}
 			else if (location == 2) {
 				zombies.push_back(Zombie{ 190, 896 });
@@ -35,8 +34,8 @@ void ZombieSpawner::update() {
 				zombies.push_back(Zombie{ 32, 800 });
 				//tiledMap->MAP_DATA[1][5] = 32;
 			}
-			else {
-				//tiledMap->MAP_DATA[1][5] = 32;
+			else if (location == 7){
+				tiledMap->MAP_DATA[17][10] = 32;
 			}
 
 		}

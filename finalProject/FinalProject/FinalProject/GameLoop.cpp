@@ -12,6 +12,7 @@ GameLoop::GameLoop()
 	bm = nullptr;
 	zs = nullptr;
 	textRenderer = nullptr;
+	sp = nullptr;
 
 	//
 	for (int i = 0; i < 512; i++) {
@@ -58,16 +59,21 @@ bool GameLoop::init()
 	tm = new TiledMap(this->renderer);
 	tm->init();
 
+	sp = new SoundPlayer();
+	sp->PlaySound(Sounds::BACKINGTRACK);
+
+
 	player = new Player(this->renderer, this->tm);
 	player->init();
 
 	player->tiledMap = tm;
 
-	bm = new BulletManager(this->renderer, this->player);
+	bm = new BulletManager(this->renderer, this->player, this->sp);
 	bm->init();
 
 	zs = new ZombieSpawner(this->renderer, this->bm, this->player, this->tm);
 	zs->init();
+
 
 	textRenderer = new TextRenderer("arial.ttf", 30);
 

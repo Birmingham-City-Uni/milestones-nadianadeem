@@ -1,6 +1,6 @@
 #include "BulletManager.h"
 
-BulletManager::BulletManager(SDL_Renderer* renderer, Player* player) : renderer(renderer), player(player) {};
+BulletManager::BulletManager(SDL_Renderer* renderer, Player* player, SoundPlayer* sp) : renderer(renderer), player(player), sp(sp) {};
 
 void BulletManager::init() 
 {
@@ -15,6 +15,7 @@ void BulletManager::processInput(bool* keyDown)
 	{
 		if (SDL_GetTicks() - lastShot > SHOOT_DELAY) 
 		{
+			sp->PlayShot(1);
 			bullets.push_back(Bullets{ player->getPosX() + 10, player->getPosY()+ 22 , 0, 0.0f });
 			lastShot = SDL_GetTicks();
 		}

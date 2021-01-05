@@ -8,6 +8,7 @@
 
 #include "Player.h"
 #include "Bullets.h"
+#include "SoundPlayer.h"
 
 using namespace std;
 
@@ -16,7 +17,7 @@ using namespace std;
 class BulletManager {
 	friend class ZombieSpawner;
 public:
-	BulletManager(SDL_Renderer* renderer, Player* player);
+	BulletManager(SDL_Renderer* renderer, Player* player, SoundPlayer* sp);
 	void init();
 	void processInput(bool*);
 	void update();
@@ -28,6 +29,7 @@ private:
 	SDL_Texture* bulletTexture;
 	vector<Bullets>bullets;
 	Player* player;
+	SoundPlayer* sp;
 
 	const int SHOOT_DELAY = 300;
 	const int BULLET_VELOCITY = 15;

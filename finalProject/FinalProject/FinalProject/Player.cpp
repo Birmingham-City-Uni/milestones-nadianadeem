@@ -92,6 +92,16 @@ void Player::processInput(bool* keyDown)
 					position.y = oldY;
 				}
 			}
+
+			if (tiledMap->MAP_DATA[i][j] == 32) {
+				SDL_Rect mapTile = { j * 32,i * 32,32,32 };
+				/*if (SDL_HasIntersection(&playerPos, &mapTile)) {
+					for (auto& z : zs->zombies) {
+
+					}*/
+				//}
+			}
+
 			else {
 				SDL_Rect mapTile = { j * 32,i * 32,32,32 };
 				if (SDL_HasIntersection(&playerPos, &mapTile)) {

@@ -11,6 +11,7 @@
 #include "BulletManager.h"
 #include "ZombieSpawner.h"
 #include "TextRenderer.h"
+#include "SoundPlayer.h"
 
 using namespace std;
 
@@ -46,6 +47,8 @@ private:
 	BulletManager* bm;
 	ZombieSpawner* zs;
 	TextRenderer* textRenderer;
+	SoundPlayer* sp;
+
 
 	bool keyDown[512];
 };

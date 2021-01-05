@@ -72,13 +72,13 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>.\SDL2_image-2.0.5\include;.\SDL2_ttf-2.0.15\include;.\SDL2-2.0.12\include;$(IncludePath)</IncludePath>
-    <LibraryPath>.\SDL2_image-2.0.5\lib\x86;.\SDL2_ttf-2.0.15\lib\x86;.\SDL2-2.0.12\lib\x86;$(LibraryPath)</LibraryPath>
+    <IncludePath>.\SDL2_image-2.0.5\include;.\SDL2_ttf-2.0.15\include;.\SDL2-2.0.12\include;.\SDL2_mixer-2.0.4\include;$(IncludePath)</IncludePath>
+    <LibraryPath>.\SDL2_image-2.0.5\lib\x86;.\SDL2_ttf-2.0.15\lib\x86;.\SDL2-2.0.12\lib\x86;.\SDL2_mixer-2.0.4\lib\x86;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>.\SDL2_image-2.0.5\include;.\SDL2_ttf-2.0.15\include;.\SDL2-2.0.12\include;$(IncludePath)</IncludePath>
-    <LibraryPath>.\SDL2_image-2.0.5\lib\x86;.\SDL2_ttf-2.0.15\lib\x86;.\SDL2-2.0.12\lib\x86;$(LibraryPath)</LibraryPath>
+    <IncludePath>.\SDL2_image-2.0.5\include;.\SDL2_ttf-2.0.15\include;.\SDL2-2.0.12\include;.\SDL2_mixer-2.0.4\include;$(IncludePath)</IncludePath>
+    <LibraryPath>.\SDL2_image-2.0.5\lib\x86;.\SDL2_ttf-2.0.15\lib\x86;.\SDL2-2.0.12\lib\x86;.\SDL2_mixer-2.0.4\lib\x86;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
@@ -96,11 +96,13 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>Create</PrecompiledHeader>
+      <ForcedIncludeFiles>stdafx.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2test.lib;SDL2_image.lib;SDL2_ttf.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2test.lib;SDL2_image.lib;SDL2_ttf.lib;SDL2_mixer.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -111,13 +113,15 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <PrecompiledHeader>Create</PrecompiledHeader>
+      <ForcedIncludeFiles>stdafx.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2test.lib;SDL2_image.lib;SDL2_ttf.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2test.lib;SDL2_image.lib;SDL2_ttf.lib;SDL2_mixer.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -157,6 +161,11 @@
     <ClCompile Include="GameLoop.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="SoundPlayer.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
     <ClCompile Include="TextRenderer.cpp" />
     <ClCompile Include="TiledMap.cpp" />
     <ClCompile Include="ZombieSpawner.cpp" />
@@ -168,6 +177,8 @@
     <ClInclude Include="Bullets.h" />
     <ClInclude Include="GameLoop.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="SoundPlayer.h" />
+    <ClInclude Include="stdafx.h" />
     <ClInclude Include="TextRenderer.h" />
     <ClInclude Include="TiledMap.h" />
     <ClInclude Include="ZombieSpawner.h" />
