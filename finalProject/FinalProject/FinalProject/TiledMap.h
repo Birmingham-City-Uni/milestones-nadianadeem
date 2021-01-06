@@ -18,7 +18,8 @@ public:
 	void init();
 	void draw();
 	void clean();
-
+	
+	//Vector is used to store numbers that correspond to the tilemap, so the map can be created.
 	vector<vector<int>> MAP_DATA = {
 			{5 , 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 19, 6},
 			{11 , 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 9},
@@ -57,5 +58,4 @@ private:
 	SDL_Renderer* renderer = nullptr;
 	SDL_Texture* mapTileSet = nullptr;
 	SDL_Rect rect;
-	//Array is used to store numbers that correspond to the tilemap, so the masp can be created.
 };
