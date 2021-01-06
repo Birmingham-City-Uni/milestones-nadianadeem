@@ -1,5 +1,6 @@
 #include "TextRenderer.h"
 
+//Initialises the TTF, if it cannot be initialised an error message is shown in the console.
 TextRenderer::TextRenderer(string ttfFile, int fontSize)
 {
 	if (TTF_Init() < 0) 
@@ -15,11 +16,14 @@ TextRenderer::TextRenderer(string ttfFile, int fontSize)
 	}
 }
 
+//The deconstructor releases the text surface to free memory.
 TextRenderer::~TextRenderer()
 {
 	SDL_FreeSurface(textSurface);
 }
 
+//Renderers string to the window at the position given.
+//A colour is set and then a textSurface is created using the strong given in the parameter, this is then used to create a texture and is copied to the renderer.
 void TextRenderer::RenderString(SDL_Renderer* renderer, string text, int x, int y)
 {
 	SDL_Color textColor = { 255, 0, 0 };
@@ -35,6 +39,7 @@ void TextRenderer::RenderString(SDL_Renderer* renderer, string text, int x, int 
 	SDL_DestroyTexture(textTexture);
 }
 
+//Destroys texture to free memory.
 void TextRenderer::clean()
 {
 	SDL_DestroyTexture(textTexture);
