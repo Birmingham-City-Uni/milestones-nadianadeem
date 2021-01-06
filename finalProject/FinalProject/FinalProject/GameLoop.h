@@ -17,6 +17,7 @@ using namespace std;
 
 class GameLoop {
 public:
+//Creates methods needed for the game loop.
 	GameLoop();
 
 	bool init();
@@ -28,7 +29,7 @@ public:
 	void draw();
 
 	void clean();
-
+	
 	bool getKeyDown(int keyCode) {
 		if (keyCode > 0 && keyCode < 512) {
 			return this->keyDown[keyCode];
@@ -37,10 +38,13 @@ public:
 	}
 
 private:
+//ZombieString holds the text for the score UI. 
 	stringstream zombieString;
+//The window and renderer for the game are stored here.
 	SDL_Window* window;
 	SDL_Renderer* renderer;
 
+//variables for all the game objects are stored here.
 	Background* bg;
 	Buildings* buildings;
 	TiledMap* tm;
