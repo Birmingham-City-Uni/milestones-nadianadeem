@@ -1,5 +1,6 @@
 #include "Player.h"
 
+//Sets the renderer, width, height and position of the player.
 Player::Player(SDL_Renderer* renderer, TiledMap* tiledMap)
 {
 	this->renderer = renderer;
@@ -9,6 +10,7 @@ Player::Player(SDL_Renderer* renderer, TiledMap* tiledMap)
 
 }
 
+//Creates the texture of the player from the image that is stored as a surface.
 void Player::init() 
 {
 	SDL_Surface* surface = IMG_Load("assets/Top_Down_Survivor/handgun/idle/survivor-idle_handgun_0.png");
@@ -16,11 +18,12 @@ void Player::init()
 	SDL_FreeSurface(surface);
 }
 
+//Draws the player and health bar as well as checking collisions between the player and the tilemap.
 void Player::draw() 
 {
-	//SDL_RenderCopy(this->renderer, this->texture, 0, &this->position);
 	SDL_RenderCopyEx(this->renderer, this->texture, NULL, &this->position, angle, NULL, flip);
 
+//Creation of the health bar by drawing various rectangles and filling them in, in a certain colour.
 	SDL_Rect healthBackground = { 5, 5, 100, 25 };
 	SDL_SetRenderDrawColor(this->renderer, 255, 0, 0, 255);
 	SDL_RenderFillRect(this->renderer, &healthBackground);
@@ -30,12 +33,15 @@ void Player::draw()
 	SDL_SetRenderDrawColor(renderer, 0, 255, 0, 255);
 	SDL_RenderFillRect(renderer, &healthBar);
 
+//If the player has no health left move the player off the screen.
 	if (health == 0) {
 		position.x = 1000;
 		position.y = 1000;
 	}
 }
 
+//Stores the position of the player in the variables oldX and oldY this is used to stop the player from moving
+//when trying to move in an unwalkable tile.
 void Player::update() {
 	oldX = position.x;
 	oldY = position.y;
@@ -45,6 +51,8 @@ void Player::processInput(bool* keyDown)
 {
 	oldX = position.x;
 	oldY = position.y;
+	//Moves, rotates and flips the player depending on the user's input.
+	//Also keeps track of the direction the player is facing using 4 booleans.
 	if (keyDown[SDL_SCANCODE_RIGHT]) {
 		facingRight = true;
 		facingLeft = false;
@@ -85,6 +93,8 @@ void Player::processInput(bool* keyDown)
 		exit();
 	}
 
+//Stores the player's position and then checks every tile in the tile map to make sure that the player is in a walkable tile. If the player tried to move
+//into an unwalkable tile the player will stop moving.
 	playerPos = { position.x, position.y,25,25 };
 	for (int i = 0; i < 30; i++) {
 		for (int j = 0; j < 16; j++) {
@@ -120,24 +130,27 @@ void Player::processInput(bool* keyDown)
 		}
 	}
 
+	//Limits the health of the player to 100.
 	if (health > 100) {
 		health = 100;
 	}
 }
 
-
+//Destroys the texture of the player to free memory.
 void Player::clean() {
 	SDL_DestroyTexture(this->texture);
 }
-
+//Returns the X position of the player.
 float Player::getPosX() {
 	return position.x;
 }
 
+//Return the Y position of the player.
 float Player::getPosY() {
 	return position.y;
 }
 
+//Quits SDL when executed.
 void Player::exit()
 {
 	SDL_Quit();
