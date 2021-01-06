@@ -12,6 +12,7 @@
 
 using namespace std;
 
+//Structure create to store attributes of the zombies created.
 struct Zombie {
 	int x, y;
 	int oldX, oldY;
@@ -19,6 +20,7 @@ struct Zombie {
 	int nextMove;
 };
 
+//Methods created that are used by the ZombieSpawner script.
 class ZombieSpawner {
 	friend class TextRenderer;
 public:
@@ -35,26 +37,37 @@ public:
 	int getZombiesHit();
 
 private:
+//Vector to store all zombies on the screen.
 	vector<Zombie> zombies;
+//The renderer is stored to draw the zombies to the screen.
 	SDL_Renderer* renderer;
+//Store the texture of the zombie to be drawn.
 	SDL_Texture* zombieTexture;
+//Objects stored so their values can be used by this script.
 	BulletManager* bulletManager;
 	Player* player;
 	TiledMap* tiledMap;
 
+//Various SDL_Rects used to check collisions and locations of different objects.
 	SDL_Rect playerRect;
 	SDL_Rect bulletRect;
 	SDL_Rect zombieRect;
 	SDL_Rect nullRect;
 
-
+//Used to keep track of the amount of zombies destroyed.
 	int zombiesShot = 0;
+//Stores the next move of the zombie.
 	int nMove = 0;
+//Stores the tile number that is itrated through to move the zombie to the correct point.
 	int tileNo = 1;
 
+//Time between waves is saved to trigger the waves to begin and zombies to spawn.
 	const int WAVE_SPAWN_TIME = 10000;
+//2 long integers stored to trigger the enemy wave spawning and the 1 second timer for the zombies to move closer to the enemy.
 	long int lastSpawnTime = 0;
 	long int checkTime = 0;
+//This ineger is used to increase the current wave.
 	int waveIncrease = 5;
+//Current wave is used to specify how many zombies are to spawn each wave.
 	int currentWave = 1;
 };
