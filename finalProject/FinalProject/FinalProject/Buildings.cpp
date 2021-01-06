@@ -25,6 +25,7 @@ void Buildings::draw() {
 	SDL_RenderCopy(this->renderer, this->texture, 0, &this->position);
 }
 
+//Deletes texture after game is played to free memory.
 void Buildings::clean()
 {
 	SDL_DestroyTexture(this->texture);
