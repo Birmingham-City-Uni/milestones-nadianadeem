@@ -32,6 +32,7 @@ void TiledMap::draw() {
 	}
 }
 
+//Destroys texture to free memory.
 void TiledMap::clean()
 {
 	SDL_DestroyTexture(mapTileSet);
