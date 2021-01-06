@@ -7,6 +7,8 @@
 
 <p> My unique mechanics will be that, Madison will be able to collect health power-ups as well as a bomb power-up that will destroy all zombies on the screen. The more zombies killed the higher the score attained, there will be a leaderboard as part of the game that will save the top 10 scores every achieved on that specific download of the game. I also aim to have the background and the aesthetic look of the zombies change once the player reaches specific round milestones.</p>
 
+<a href="https://ansimuz.itch.io/warped-city"> Enemy and background assets linked here.</a>
+
 ![Image of Background Asset](https://img.itch.zone/aW1hZ2UvMTU2ODM5LzcyMDE0MS5wbmc=/347x500/HxAUgI.png)
 <p>Figure 1: Background assets I am using for Zombie Mayhem. </p>
 
@@ -14,13 +16,18 @@
 <p>Figure 2: Player asset I will be using for Zombie Mayhem. </p>
 
 ![Image of Zombie Asset](https://img.itch.zone/aW1hZ2UvNzMzNDIwLzQwODQyNDkucG5n/347x500/c7Yu2Y.png)
-<p>Figure 3: Zombie asset I plan on using for Zombie Mayhem </p>
+<p>Figure 3: Zombie asset I plan on using for Zombie Mayhem. - No longer being used. </p>
 
 <img src="profiler.PNG">
 <p> Image of the Performance Profiler of the code. </p>
 
 
 <h3> Dev Log </h3>
+<p> 6/01/2021 - I decided to keep the robots as the enemies I like the look of them more. Carried out a performance test on the game. The game is more CPU intensive than GPU intensive, this is probably due to the pathfinding algorithm, as more enemies are instantiated into the world there are more spikes in cpu usage during runtime. </p>
+
+<img src="performance.PNG">
+<p> Latest performance test of the program. </p>
+
 <p> 5/01/2021 - Background audio and sound effects have been implmente. The unique mechanics have now also been implmeneted so there is a health and a bomb pickup (these are explained in the description above. There is a memory leak in the program somewhere so I am currently trying to find the cause of that. I free all surfaces once created so I am unsure of where the memory leak is currently. Found the fix to the memory leak it was the text renderer showing the score.</p>
 
 <p> 3/01/2021 - Pathfinding algorithm is done and works with the enemies movement. This is done via a Breadth First Search algorithm where a path is created this is done in the update function for each zombie to get the next move the zombies should go in. </p>
