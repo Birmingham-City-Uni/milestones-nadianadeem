@@ -25,6 +25,7 @@ void Background::draw() {
 	SDL_RenderCopy(this->renderer, this->texture, 0, &this->position);
 }
 
+//Destroys the texture after game has ended.
 void Background::clean()
 {
 	SDL_DestroyTexture(this->texture);
