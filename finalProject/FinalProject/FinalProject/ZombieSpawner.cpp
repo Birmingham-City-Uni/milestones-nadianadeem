@@ -31,7 +31,7 @@ void ZombieSpawner::update() {
 			}
 			else if (location == 3) {
 				zombies.push_back(Zombie{ 400,450 });
-				//tiledMap->MAP_DATA[1][5] = 32;
+				tiledMap->MAP_DATA[1][5] = 16;
 
 			}
 			else if (location == 4){
@@ -39,7 +39,6 @@ void ZombieSpawner::update() {
 				//tiledMap->MAP_DATA[1][5] = 32;
 			}
 			else if (location == 7){
-				player->health = 50;
 				tiledMap->MAP_DATA[17][10] = 24;
 			}
 
@@ -121,6 +120,9 @@ void ZombieSpawner::update() {
 	bulletManager->bullets.erase(removeBullet, bulletManager->bullets.end());
 
 	if (player->removeZombies) {
+		for (auto& z : zombies) {
+			zombiesShot = zombiesShot + 1;
+		}
 		zombies.erase(zombies.begin(), zombies.end());
 		player->removeZombies = false;
 	}
