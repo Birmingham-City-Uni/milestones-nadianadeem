@@ -2,6 +2,7 @@
 
 ZombieSpawner::ZombieSpawner(SDL_Renderer* renderer, BulletManager* bulletManager, Player* player, TiledMap* tiledMap) : renderer(renderer), bulletManager(bulletManager), player(player), tiledMap(tiledMap) {};
 
+//Creates the texture that the zombies are drawn from.
 void ZombieSpawner::init() {
 	SDL_Surface* surface = IMG_Load("assets/SPRITES/misc/drone/drone-1.png");
 	this->zombieTexture = SDL_CreateTextureFromSurface(this->renderer, surface);
@@ -9,8 +10,10 @@ void ZombieSpawner::init() {
 }
 
 void ZombieSpawner::update() {
+	//When the delay time is up zombies are spawned.
 	if (SDL_GetTicks() - lastSpawnTime > WAVE_SPAWN_TIME) {
-
+		//For the amount of zombies that are allowed to start this wave generate a number 
+		//and generated certain pick ups and zombies in locations accordingly.
 		for (int i = 0; i < currentWave; i++) {
 			if (zombiesShot == waveIncrease) {
 				currentWave = currentWave + 1;
@@ -47,6 +50,7 @@ void ZombieSpawner::update() {
 		lastSpawnTime = SDL_GetTicks();
 	}
 
+	//For every second carry out Breadth First search for each zombie with the player as the destination to get a path and move it one place towards the player.
 	if (SDL_GetTicks() - checkTime > 1000) {
 		for (auto& z : zombies) {
 			int tileNo = 1;
@@ -68,6 +72,8 @@ void ZombieSpawner::update() {
 		checkTime = SDL_GetTicks();
 	}
 
+	//Check if a bullet has hit any zombie if it has increase zombiesShot by 1 which will be reflected in the players score.
+	//The zombie and bullet will then be destroyed.
 	for (auto& z : zombies) {
 
 		int oldX = z.x;
@@ -84,7 +90,8 @@ void ZombieSpawner::update() {
 			}
 
 		}
-
+		
+		//Checks if the player and zombie have collided if so destroy the zombie and subtract 50 from the player's current health.
 		SDL_Rect playerRect = { player->position.x, player->position.y, 32, 32 };
 		SDL_Rect zombieRect = { z.x, z.y, 32, 32 };
 
@@ -94,6 +101,7 @@ void ZombieSpawner::update() {
 			player->health = player->health - 50;
 		}
 
+		//Gets the tile position of the zombie and store it in tileX and tileY.
 		SDL_Rect zomPos = { z.x, z.y,20,20 };
 		for (int i = 0; i < 30; i++) {
 			for (int j = 0; j < 16; j++) {
@@ -113,12 +121,15 @@ void ZombieSpawner::update() {
 		}
 
 	}
+	
+	//remove the zombies and bullets if certain conditions are met, these conditions will be met if they have been effected by the code above.
 
 	auto remove = std::remove_if(zombies.begin(), zombies.end(), [](const Zombie& z) {return z.x == 0xCCCCCCCC; });
 	auto removeBullet = std::remove_if(bulletManager->bullets.begin(), bulletManager->bullets.end(), [](const Bullets& b) {return b.distance == 1000; });
 	zombies.erase(remove, zombies.end());
 	bulletManager->bullets.erase(removeBullet, bulletManager->bullets.end());
 
+	//If the removeZombies boolean is true remove all zombies off the map.
 	if (player->removeZombies) {
 		for (auto& z : zombies) {
 			zombiesShot = zombiesShot + 1;
@@ -129,6 +140,7 @@ void ZombieSpawner::update() {
 
 }
 
+//For all zombies in the vector zombies draw them on the screen in the desired x and y positions.
 void ZombieSpawner::draw() {
 	for (auto& z : zombies) {
 		SDL_Rect dest = { z.x, z.y, 32, 32 };
@@ -136,6 +148,7 @@ void ZombieSpawner::draw() {
 	}
 }
 
+//Destroy the zombie texture to free memory.
 void ZombieSpawner::clean()
 {
 	SDL_DestroyTexture(zombieTexture);
@@ -290,6 +303,7 @@ void ZombieSpawner::validatePath(vector<vector<int>> M, int col, int row, int V,
 	return outputPath(adj, s, d, V, col);
 }
 
+//Return the zombieShot variable.
 int ZombieSpawner::getZombiesHit()
 {
 	return zombiesShot;
